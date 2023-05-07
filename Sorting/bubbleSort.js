@@ -20,7 +20,6 @@ const bubbleSort = (array) => {
     for (let i = 0; i < array.length; i++){
         swaps=false
         for (let j = 0; j < array.length - i - 1; j++){
-            // console.log(array,array[j], array[j + 1]);
             if (array[j] > array[j + 1]) {
                 [array[j], array[j + 1]] = [array[j + 1], array[j]];
                 swaps = true;
@@ -32,8 +31,8 @@ const bubbleSort = (array) => {
         if (!swaps) break;
         console.log("pass")
     }
-    console.log(array)
+    // console.log(array)
     return array;
 }
 
-console.log(bubbleSort([1,5,2,1000,4,10,9,2003,-10]))
+console.log(bubbleSort([1,2,3,5,4]));
