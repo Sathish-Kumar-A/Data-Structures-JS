@@ -41,6 +41,48 @@ class Graph{
     printGraph() {
         console.log(this.adjacentList);
     }
+
+    DFSTraversalRecursive(startvertex) {
+        const visitedNodes = {};
+        const nodeValues = [];
+        const adjacentList = this.adjacentList;
+        function recursiveCall(vertex) {
+            if (!adjacentList[vertex].length) {
+                return
+            }
+            if (!visitedNodes[vertex]) { 
+                visitedNodes[vertex] = true;
+                nodeValues.push(vertex);
+            let i = 0;
+            while (i < adjacentList[vertex].length) {
+                    recursiveCall(adjacentList[vertex][i]);
+                    i++;
+                }
+            }
+        }
+        recursiveCall(startvertex);
+        return nodeValues;
+    }
+    IterativeDFSTraversal(startvertex) {
+        const visitedNodes = {};
+        const nodeValues = [];
+        const adjacentList = this.adjacentList;
+
+        let stack = [startvertex];
+        while (stack.length) {
+            const vertex=stack.pop();
+            if (!visitedNodes[vertex]) {
+               visitedNodes[vertex] = true;
+                nodeValues.push(vertex);
+                let i = 0;
+                while (i < adjacentList[vertex].length) { 
+                    stack.push(adjacentList[vertex][i]);
+                    i++;
+                }
+            }
+        }
+        return nodeValues;
+    }
 }
 
 const graph = new Graph();
@@ -50,4 +92,7 @@ graph.addEdgesToVertex("Trichy", "Madurai")
 // graph.printGraph();
 // graph.removeEdge("Chennai", "Trichy");
 // graph.removeVertex("Trichy")
+console.log(graph.DFSTraversalRecursive("Chennai"));
+console.log(graph.IterativeDFSTraversal("Chennai"));
+
 graph.printGraph();
