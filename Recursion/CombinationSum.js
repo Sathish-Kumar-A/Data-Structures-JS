@@ -12,20 +12,24 @@ var combinationSum = function (candidates, target) {
 
 function combinations(index, reqSum, ds, arr,result) {
     // console.log(arr[index], reqSum,"re",index,ds)
-    if (arr[index] === reqSum) {
+    if (reqSum===0) {
         // console.log([...ds, arr[index]]);
-        result.push([...ds, arr[index]]);
+        result.push([...ds]);
         return
     }
-    if ((index >= arr.length) || arr[index] > reqSum) {
+    if (index >= arr.length) {
         return;
     }
-    reqSum -= arr[index];
-    ds.push(arr[index]);
-    combinations(index, reqSum, ds, arr,result);
-    ds.pop();
-    reqSum += arr[index];
+    // reqSum -= arr[index];
+    if (arr[index] <= reqSum) {
+        ds.push(arr[index]);
+        // console.log({reqSum});
+        combinations(index, reqSum - arr[index], ds, arr, result);
+        ds.pop();
+
+    }
+    // reqSum += arr[index];
     combinations(index + 1, reqSum, ds, arr,result);
 }
 
-combinationSum([8, 7, 4, 3], 11);
+combinationSum([10, 1, 2, 7, 6, 1, 5], 8);
