@@ -58,4 +58,4 @@ function optimizedSwapPermutation(index, arr,result) {
     }
 }
 
-console.log(permute([1,1,2]));
+console.log(permute([1,2,3]));
