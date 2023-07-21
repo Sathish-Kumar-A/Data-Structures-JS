@@ -5,7 +5,9 @@
 var isValidSudoku = function (board) {
   let obj = {};
   for (let i = 0; i < board.length; i++) {
+    let row = "row" + i;
     for (let j = 0; j < board.length; j++) {
+      
       if (!obj.hasOwnProperty(i) || !obj[i].hasOwnProperty(j)) {
         if (!(`${i}` in obj)) {
           obj[i] = {};
