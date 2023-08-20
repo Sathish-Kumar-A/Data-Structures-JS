@@ -7,10 +7,10 @@ var permute = function (nums) {
   // Method one ()// * two Memory ds were used,
     // nums.sort((a, b) => a - b);
     console.log(nums);
-    // permutations([], nums, result, {});
+    permutations([], nums, result, {});
 
     // Method Two() //* Optimized swap 
-    optimizedSwapPermutation(0,nums, result);
+    // optimizedSwapPermutation(0,nums, result);
     
   return result;
 };
